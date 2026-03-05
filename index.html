@@ -3,26 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Bhalchandra Caterers · Royal Wedding & Party</title>
+  <title>Shree Bhalchandra Caterers · Complete Menu</title>
   <style>
-    /* --------------------------------------------- */
-    /* modern premium palette – royal wedding vibe    */
-    /* --------------------------------------------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     }
-
     body {
       background: #fcf7f0;
       color: #2e241f;
       line-height: 1.5;
       scroll-behavior: smooth;
     }
-
-    /* sticky navbar */
     .navbar {
       position: sticky;
       top: 0;
@@ -37,7 +31,6 @@
       z-index: 999;
       border-bottom: 1px solid rgba(255, 215, 150, 0.4);
     }
-
     .nav-logo {
       font-size: 1.7rem;
       font-weight: 600;
@@ -46,13 +39,12 @@
       text-shadow: 2px 2px 4px #6b4f2e;
       font-family: 'Times New Roman', serif;
     }
-
     .nav-links {
       display: flex;
       gap: 2rem;
       font-weight: 500;
+      flex-wrap: wrap;
     }
-
     .nav-links a {
       color: #fff3d1;
       text-decoration: none;
@@ -61,13 +53,10 @@
       border-bottom: 2px solid transparent;
       transition: 0.25s;
     }
-
     .nav-links a:hover {
       border-bottom-color: #ffd78c;
       color: white;
     }
-
-    /* floating cart + wa (we repurpose wa for cart) */
     .floating-cart {
       position: fixed;
       bottom: 30px;
@@ -88,12 +77,10 @@
       transition: 0.2s;
       text-decoration: none;
     }
-
     .floating-cart:hover {
       background: #c6a229;
       transform: scale(1.1);
     }
-
     .cart-badge {
       position: absolute;
       top: -5px;
@@ -110,14 +97,12 @@
       font-weight: bold;
       border: 2px solid #ffd58c;
     }
-
-    /* hero */
     .hero {
       background: linear-gradient(95deg, rgba(0,0,0,0.6), rgba(90, 60, 30, 0.5)), 
                   url('https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
       background-size: cover;
       background-position: center 65%;
-      min-height: 75vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -125,7 +110,6 @@
       color: #fff9e6;
       border-bottom: 8px solid #dbb47a;
     }
-
     .hero-content {
       max-width: 900px;
       padding: 2rem;
@@ -134,14 +118,16 @@
       border-radius: 40px 10px 40px 10px;
       border: 1px solid #ffd78c;
     }
-
     .hero h1 {
       font-size: 5rem;
       font-family: 'Times New Roman', serif;
       text-shadow: 6px 6px 10px #2b1c0c;
       margin-bottom: 1rem;
     }
-
+    .hero h2 {
+      font-size: 2.5rem;
+      color: #ffebc0;
+    }
     .hero-phones {
       font-size: 2rem;
       background: rgba(255,255,255,0.15);
@@ -149,7 +135,6 @@
       border-radius: 60px;
       margin: 20px 0;
     }
-
     .btn-call-hero {
       background: linear-gradient(145deg, #dbb679, #b88d4e);
       border: none;
@@ -160,19 +145,15 @@
       color: #281f12;
       box-shadow: 0 10px 20px #5e3a1c;
       cursor: pointer;
-      transition: 0.2s;
       border: 2px solid #ffdd9e;
       text-decoration: none;
       display: inline-block;
     }
-
-    /* sections */
     .section {
       padding: 4rem 2rem;
       max-width: 1400px;
       margin: 0 auto;
     }
-
     .section-title {
       font-size: 3.2rem;
       text-align: center;
@@ -183,7 +164,6 @@
       display: inline-block;
       padding-bottom: 0.3rem;
     }
-
     .about-card {
       background: white;
       border-radius: 35px 10px 35px 10px;
@@ -195,8 +175,6 @@
       max-width: 1100px;
       margin: 0 auto;
     }
-
-    /* menu grid with add-to-cart buttons */
     .menu-grid {
       display: flex;
       flex-wrap: wrap;
@@ -204,7 +182,6 @@
       justify-content: center;
       margin-top: 3rem;
     }
-
     .category-card {
       flex: 1 1 340px;
       max-width: 400px;
@@ -215,12 +192,10 @@
       overflow: hidden;
       border: 1px solid #eedbba;
     }
-
     .category-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 40px 35px -10px #9e7c58;
     }
-
     .cat-header {
       background: linear-gradient(120deg, #ba9a6b, #a47e4e);
       padding: 1.5rem 1.2rem;
@@ -231,12 +206,10 @@
       cursor: pointer;
       border-bottom: 3px solid #ffdc9f;
     }
-
     .cat-header h3 {
       font-size: 1.9rem;
       font-family: 'Georgia', serif;
     }
-
     .toggle-btn {
       background: #2b1f10;
       color: #ffd98c;
@@ -252,7 +225,6 @@
       font-weight: bold;
       box-shadow: 0 0 0 2px #ffeac2;
     }
-
     .cat-items {
       padding: 0 1.2rem 1.2rem;
       background: #fffcf4;
@@ -260,12 +232,10 @@
       max-height: 2000px;
       overflow: hidden;
     }
-
     .cat-items.collapsed {
       max-height: 0;
       padding: 0 1.2rem;
     }
-
     .menu-item-row {
       display: flex;
       justify-content: space-between;
@@ -276,12 +246,10 @@
       gap: 8px;
       flex-wrap: wrap;
     }
-
     .item-name {
       font-weight: 500;
       flex: 2;
     }
-
     .item-price {
       font-weight: 700;
       background: #d4af37;
@@ -290,7 +258,6 @@
       color: #1d140b;
       white-space: nowrap;
     }
-
     .add-cart-btn {
       background: #9c7e53;
       border: none;
@@ -308,18 +275,50 @@
       border: 1px solid #efd29e;
       white-space: nowrap;
     }
-
     .add-cart-btn:hover {
       background: #b59362;
       transform: scale(1.02);
     }
-
-    /* cart slideover panel */
+    .special-item-card {
+      background: #faf2e7;
+      border-radius: 25px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 2px solid #e6cfb0;
+      box-shadow: 0 5px 8px rgba(0,0,0,0.05);
+    }
+    .special-item-card input[type="checkbox"] {
+      width: 25px;
+      height: 25px;
+      accent-color: #a77b4d;
+      transform: scale(1.2);
+      margin-right: 8px;
+    }
+    .special-item-detail {
+      flex: 1;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .special-item-desc {
+      color: #6f4e2e;
+      font-size: 0.95rem;
+    }
+    .special-select-all {
+      margin: 1rem 0;
+      background: #e7d7bd;
+      padding: 0.8rem;
+      border-radius: 40px;
+      text-align: center;
+      font-weight: 600;
+    }
     .cart-panel {
       position: fixed;
       top: 0;
       right: -100%;
-      width: 400px;
+      width: 420px;
       max-width: 95%;
       height: 100vh;
       background: #fffef9;
@@ -330,11 +329,9 @@
       overflow-y: auto;
       border-left: 8px solid #d4af37;
     }
-
     .cart-panel.open {
       right: 0;
     }
-
     .cart-header {
       display: flex;
       justify-content: space-between;
@@ -343,7 +340,6 @@
       color: #6f4e2e;
       margin-bottom: 2rem;
     }
-
     .close-cart {
       background: none;
       border: none;
@@ -351,16 +347,14 @@
       cursor: pointer;
       color: #9e7a4b;
     }
-
     .cart-items-list {
       list-style: none;
       margin-bottom: 2rem;
-      max-height: 40vh;
+      max-height: 30vh;
       overflow-y: auto;
       border-bottom: 2px solid #ebd5b0;
       padding-bottom: 1rem;
     }
-
     .cart-item-li {
       display: flex;
       justify-content: space-between;
@@ -370,18 +364,19 @@
       margin-bottom: 0.6rem;
       align-items: center;
     }
-
     .cart-item-name {
       font-weight: 500;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
     .cart-item-price {
       font-weight: 700;
       background: #e6c27a;
       padding: 0.2rem 0.8rem;
       border-radius: 30px;
     }
-
     .remove-item {
       background: #b65b5b;
       color: white;
@@ -392,32 +387,26 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     .cart-total {
       font-size: 1.8rem;
       margin: 1.5rem 0;
       text-align: right;
     }
-
-    /* inquiry form */
     .inquiry-form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       margin-top: 1.5rem;
     }
-
     .form-group {
       display: flex;
       flex-direction: column;
     }
-
     .form-group label {
       font-weight: 600;
       color: #5f3f21;
       margin-bottom: 0.3rem;
     }
-
     .form-group input, .form-group select, .form-group textarea {
       padding: 0.8rem;
       border: 2px solid #e9d3b5;
@@ -425,7 +414,6 @@
       font-size: 1rem;
       background: #fffcf2;
     }
-
     .send-wa-btn {
       background: #25d366;
       color: white;
@@ -442,7 +430,6 @@
       border: 3px solid #ffe2a5;
       margin-top: 1rem;
     }
-
     .footer {
       background: #31271b;
       color: #efdecb;
@@ -450,7 +437,6 @@
       margin-top: 4rem;
       border-top: 10px solid #b4945a;
     }
-
     .footer-content {
       max-width: 1300px;
       margin: auto;
@@ -459,24 +445,20 @@
       justify-content: space-between;
       gap: 2rem;
     }
-
     .copyright {
       text-align: center;
       padding: 2rem 1rem 0;
       color: #bda888;
     }
-
     .fade-scroll {
       opacity: 0;
       transform: translateY(25px);
       transition: opacity 0.9s ease, transform 0.7s ease;
     }
-
     .fade-scroll.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     @media (max-width: 800px) {
       .navbar {
         flex-direction: column;
@@ -489,46 +471,57 @@
 </head>
 <body>
   <nav class="navbar">
-    <div class="nav-logo">Bhalchandra Caterers</div>
+    <div class="nav-logo">Shree Bhalchandra Caterers</div>
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#menu">Menu</a>
+      <a href="#menu">Main Menu</a>
+      <a href="#special-events">Special Events</a>
       <a href="#footer">Contact</a>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Bhalchandra Caterers</h1>
-      <div class="hero-tagline" style="font-size:2rem; background:#d4af37b3; display:inline-block; padding:0.5rem 2rem; border-radius:50px; margin:1rem 0;">Wedding · Engagement · Party Orders</div>
+      <h1>Shree Bhalchandra<br>Caterers</h1>
+      <h2>Kankavli</h2>
       <div class="hero-phones">📞 9420403640  |  9423300532</div>
       <a href="tel:9420403640" class="btn-call-hero">Call Now</a>
+      <p style="margin-top:1rem; font-size:1.3rem; background:rgba(0,0,0,0.4); padding:0.3rem 2rem; border-radius:40px;">P.P. Narvekar ©</p>
     </div>
   </section>
 
-  <!-- About -->
   <section id="about" class="section fade-scroll">
     <h2 class="section-title">The Royal Experience</h2>
     <div class="about-card">
-      <p>✨ For over two decades, Bhalchandra Caterers has been the heartbeat of Sindhudurg weddings. We bring authentic Maharashtrian flavours and royal Indian feasts — weddings, engagements, munja, parties. Every thali is crafted with devotion and premium ingredients.</p>
+      <p>✨ Shree Bhalchandra Caterers – trusted name in Kankavli for weddings, engagements, munja, and parties. Authentic Maharashtrian thalis, premium quality, and decades of tradition. We also specialise in custom event menus. Contact P.P. Narvekar for orders.</p>
     </div>
   </section>
 
-  <!-- Menu Section (dynamic) -->
+  <!-- MAIN MENU (complete, every item from PDF) -->
   <section id="menu" class="section">
-    <h2 class="section-title">Our Exquisite Menu</h2>
+    <h2 class="section-title">Our Complete Main Menu</h2>
     <div class="menu-grid" id="menuGrid"></div>
   </section>
 
-  <!-- Floating Cart Button -->
+  <!-- SPECIAL EVENTS MENU (multiple selection, manual price) -->
+  <section id="special-events" class="section fade-scroll">
+    <h2 class="section-title">Special Events Menu (Manual Pricing)</h2>
+    <div class="about-card" style="background:#fcf3e4;">
+      <p style="font-size:1.2rem; margin-bottom:1rem;">⭐ Select multiple items for your wedding/event – final price will be communicated by Mr. Narvekar. Just share the item list with us.</p>
+      <div id="specialMenuContainer"></div>
+      <div style="display:flex; gap:1rem; justify-content:flex-end; margin-top:2rem;">
+        <button id="addSelectedSpecialBtn" class="add-cart-btn" style="font-size:1.3rem; padding:0.8rem 2rem;">➕ Add selected to cart</button>
+      </div>
+      <p style="margin-top:1rem; font-style:italic; color:#5f3f21;">Note: prices are not included; you will receive total manually.</p>
+    </div>
+  </section>
+
   <div class="floating-cart" id="cartToggle">
     🛒
     <span class="cart-badge" id="cartCount">0</span>
   </div>
 
-  <!-- Cart + Inquiry Side Panel -->
   <div class="cart-panel" id="cartPanel">
     <div class="cart-header">
       <span>Your Selections 🍽️</span>
@@ -537,9 +530,8 @@
     <ul class="cart-items-list" id="cartItemsList">
       <li style="text-align:center; color:#b39b7a;">Cart is empty</li>
     </ul>
-    <div class="cart-total" id="cartTotal">Total: ₹0</div>
+    <div class="cart-total" id="cartTotal">Total: ₹0 (manual items price excluded)</div>
 
-    <!-- Inquiry form (details + items will be appended to whatsapp) -->
     <h3 style="color:#6f4e2e;">Event & Contact Details</h3>
     <div class="inquiry-form" id="inquiryForm">
       <div class="form-group">
@@ -581,26 +573,26 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer id="footer" class="footer">
     <div class="footer-content">
       <div>
-        <h4>Bhalchandra Caterers</h4>
+        <h4>Shree Bhalchandra Caterers</h4>
         <p>आचरा रोड, लक्ष्मी चित्रमंदिर नजीक, कणकवली</p>
         <p>📞 9420403640  |  9423300532</p>
         <p>📧 catering@bhalchandra.in</p>
+        <p>© P.P. Narvekar</p>
       </div>
       <div>
         <h4>Location</h4>
         <p>Achar Road, Kankavli, Maharashtra</p>
       </div>
     </div>
-    <div class="copyright">© 2025 Bhalchandra Caterers – all rights reserved</div>
+    <div class="copyright">© 2025 Shree Bhalchandra Caterers – all rights reserved</div>
   </footer>
 
   <script>
     (function() {
-      // ---------- COMPLETE MENU (same as pdf, each item with price) ----------
+      // ---------- COMPLETE MAIN MENU (every single line from PDF, no omission) ----------
       const categories = [
         { name: "Veg Thali (₹120 - 280)", items: [
           "120₹ थाळी : प्लेन राईस, वाटाणा उसळ, कोबी भाजी, कोशिंबीर, लोणचे, पापड, डाळ",
@@ -638,19 +630,161 @@
           "कटलेट – ३०₹", "समोसा – १०₹", "चहा – २०₹", "कॉफी – ४०₹", "वेलकम ड्रिंक – ६०₹",
           "मेदूवडा चटणी/इडली सांबार – ५०₹", "आम्लेट पाव – ५०₹"
         ] },
-        { name: "Extra / जियाणी", items: [
+        { name: "Extra / जियाणी (with rates)", items: [
           "श्रीखंड, सोलकडी, पापड, लोणचे (as per thali)",
-          "जिग राईस – १००₹/plate", "पुणी – ६०₹/plate", "मिक्स भजी – ५०₹", 
-          "कालाजामून, गुलाबजामून", "रस मलाई, बासुंदी", "फुल्के / रोटी"
+          "जिग राईस – १००₹/plate",
+          "पुणी – ६०₹/plate",
+          "मिक्स भजी – ५०₹", 
+          "कालाजामून (per plate)",
+          "गुलाबजामून (per plate)",
+          "रस मलाई (per plate)",
+          "बासुंदी (per plate)",
+          "फुल्के / रोटी (per piece)"
         ] }
       ];
 
-      // ---------- CART STATE ----------
-      let cart = [];  // each item { name, price (number) }
+      // ---------- SPECIAL EVENTS MENU (extra items from PDF header / common wedding fare) ----------
+    //   const specialItems = [
+    //     "पंचरत्न डिश (veg platter)",
+    //     "मटन कोल्हापुरी स्पेशल",
+    //     "चिकन हरीयाली कबाब",
+    //     "पनीर टिक्का लंच",
+    //     "जिलेबी & रबड़ी",
+    //     "फ्रेश सीफूड (सुरमई / पापलेट)",
+    //     "वेज बिर्याणी (bulk)",
+    //     "मटण बिर्याणी रस्सा",
+    //     "शाही पनीर दम",
+    //     "भाकरी / तांदळाची भाकरी",
+    //     "सोलकडी मस्त",
+    //     "आमरस प्रीमियम",
+    //     "मिसळ पाव (event pack)",
+    //     "कटवडा प्लेटर",
+    //     "लोणचे स्पेशल मिक्स",
+    //     "पापड संग्रह",
+    //     "कोशिंबीर स्पेशल",
+    //     "मीठ लिंबू सर्व्हिस"
+    //   ];
 
-      // Render menu with add buttons
+// ---------- SHREE BHALCHANDRA CATERERS MENU ITEMS ----------
+const specialItems = [
+  // Welcome Drinks, Juices & Cold Drinks
+  "Water melon juice",
+  "Pineapple juice",
+  "Pink peru juice",
+  "Pinacolada",
+  "Kiwi pineapple juice",
+  "Kokam sarbat",
+  "Mango sarbat",
+  "Virgin mojito",
+  "Blue lugaan",
+  "Painato",
+  "Fresh lime",
+  "Tea",
+  "Coffee",
+
+  // Pickles
+  "Mango pickle",
+  "Lemon pickle",
+  "Mix pickle",
+
+  // Ice-Cream
+  "Vanilla with chocolate",
+  "Butterscotch",
+  "Chocolate",
+  "Strawberry",
+  "Rajbhog",
+  "Kulfi",
+
+  // Starters
+  "Harabhara kabab",
+  "Cheese corn boll",
+  "Paneer tikka",
+  "Paneer chilly",
+  "Veg Manchurian",
+  "Veg finger",
+  "Veg lollipop",
+
+  // Farsaan
+  "Veg cutlet",
+  "Veg spring roll",
+  "American roll",
+  "Aaluwadi",
+  "Kothimbir vadi",
+  "Mini vada",
+  "Mix bhajiya",
+  "Dhokla",
+
+  // Salads
+  "Green salad",
+  "Raita",
+  "Bundi raita",
+  "Ctchumber",
+  "Koshimbir dahi",
+  "Onion raita",
+
+  // Sweets
+  "Jalebi",
+  "Gulab jamun",
+  "Rasgulla",
+  "Basundi",
+  "Sitafal basuni",
+  "Mugdal halwa",
+  "Rasmalai",
+  "Angur basundi",
+  "Aamras",
+  "Rabadi jalebi",
+  "Shahi tukda",
+  "Modak",
+  "Puran poli",
+  "Dry fruits sheera",
+
+  // Live Counters
+  "Chat counter",
+  "Fruits counter",
+  "Dosa counter",
+  "Chinese counter",
+  "Sweet counter",
+
+  // Rice
+  "Steam rice",
+  "Jeera rice",
+  "Mix pulav",
+  "Kaju mattar pulav",
+  "Shahi pulav",
+  "Veg Biryani",
+  "Lemon rice",
+  "Biryani rice",
+
+  // Dal
+  "Malvani dal",
+  "Dal fray",
+  "Dal tadka",
+  "Punjabi kadi",
+  "Mix dal",
+  "Dal makhani",
+
+  // Sabji
+  "Bhendi masala",
+  "Chana masala",
+  "Chole masala",
+  "Kurma",
+  "Mix vej kolhapuri",
+  "Kaju paneer masala",
+  "Baigan masala",
+  "Kaju mataar masala",
+  "Malvani kaju usal",
+  "Kaju masala",
+  "Allo mattar",
+  "Aalu sabji",
+  "Aalu jeera",
+  "Vej kofta",
+  "Tawa maifil",
+  "Vej haydrabadi",
+];
+
+
       const menuGrid = document.getElementById('menuGrid');
-      function renderMenu() {
+      function renderMainMenu() {
         menuGrid.innerHTML = '';
         categories.forEach(cat => {
           const card = document.createElement('div');
@@ -667,11 +801,11 @@
             const row = document.createElement('div');
             row.className = 'menu-item-row';
             
-            // Extract price number
+            // Extract price number as before (complete coverage)
             let priceNum = 0;
             const priceMatch = it.match(/(\d+)(?=₹)/) || it.match(/[^\d](\d+)\s*₹/);
             if (priceMatch) priceNum = parseInt(priceMatch[1], 10);
-            else if (it.includes('१००') || it.includes('100')) priceNum = 100;
+            else if (it.includes('१००')|| it.includes('100')) priceNum = 100;
             else if (it.includes('१२००')|| it.includes('1200')) priceNum = 1200;
             else if (it.includes('१८००')|| it.includes('1800')) priceNum = 1800;
             else if (it.includes('२०')|| it.includes('20')) priceNum = 20;
@@ -698,7 +832,7 @@
             row.innerHTML = `
               <span class="item-name">${displayName}</span>
               <span class="item-price">${priceNum}₹</span>
-              <button class="add-cart-btn" data-name="${it.replace(/"/g,'')}" data-price="${priceNum}">➕ Add</button>
+              <button class="add-cart-btn" data-name="${it.replace(/"/g, '')}" data-price="${priceNum}">➕ Add</button>
             `;
             itemsDiv.appendChild(row);
           });
@@ -715,9 +849,28 @@
           });
         });
       }
-      renderMenu();
+      renderMainMenu();
 
-      // cart UI
+      // Special menu render
+      const specialContainer = document.getElementById('specialMenuContainer');
+      function renderSpecialMenu() {
+        let html = `<div class="special-select-all"><label><input type="checkbox" id="selectAllSpecial"> Select all special items (for event enquiry)</label></div>`;
+        specialItems.forEach((item, idx) => {
+          html += `<div class="special-item-card">
+            <input type="checkbox" class="special-checkbox" value="${item}" id="sp_${idx}">
+            <div class="special-item-detail">${item}</div>
+            <span class="special-item-desc">(manual price)</span>
+          </div>`;
+        });
+        specialContainer.innerHTML = html;
+        document.getElementById('selectAllSpecial').addEventListener('change', (e) => {
+          document.querySelectorAll('.special-checkbox').forEach(cb => cb.checked = e.target.checked);
+        });
+      }
+      renderSpecialMenu();
+
+      // Cart logic
+      let cart = [];
       const cartPanel = document.getElementById('cartPanel');
       const cartToggle = document.getElementById('cartToggle');
       const closeCart = document.getElementById('closeCart');
@@ -729,7 +882,7 @@
         cartCountSpan.innerText = cart.length;
         if (cart.length === 0) {
           cartItemsList.innerHTML = '<li style="text-align:center; color:#b39b7a;">Cart is empty</li>';
-          cartTotalSpan.innerText = 'Total: ₹0';
+          cartTotalSpan.innerText = 'Total: ₹0 (manual items price excluded)';
           return;
         }
         let html = '';
@@ -737,13 +890,13 @@
         cart.forEach((item, idx) => {
           total += item.price;
           html += `<li class="cart-item-li">
-            <span class="cart-item-name">${item.name.substring(0,25)}…</span>
-            <span class="cart-item-price">₹${item.price}</span>
+            <span class="cart-item-name">${item.name.substring(0,28)}…</span>
+            <span class="cart-item-price">${item.price ? '₹'+item.price : 'manual'}</span>
             <button class="remove-item" data-index="${idx}">✕</button>
           </li>`;
         });
         cartItemsList.innerHTML = html;
-        cartTotalSpan.innerText = `Total: ₹${total}`;
+        cartTotalSpan.innerText = `Total: ₹${total} (manual items price not included)`;
 
         document.querySelectorAll('.remove-item').forEach(btn => {
           btn.addEventListener('click', (e) => {
@@ -754,18 +907,27 @@
         });
       }
 
-      // add to cart event listener (delegation)
       document.addEventListener('click', (e) => {
         if (e.target.classList.contains('add-cart-btn')) {
-          const name = e.target.getAttribute('data-name');
-          const price = parseInt(e.target.getAttribute('data-price'), 10);
-          if (price && name) {
-            cart.push({ name, price });
-            updateCartUI();
-            // open cart panel as hint
-            cartPanel.classList.add('open');
-          }
+          const btn = e.target;
+          const name = btn.getAttribute('data-name');
+          const price = parseInt(btn.getAttribute('data-price'), 10) || 0;
+          cart.push({ name, price });
+          updateCartUI();
+          cartPanel.classList.add('open');
         }
+      });
+
+      document.getElementById('addSelectedSpecialBtn').addEventListener('click', () => {
+        const checkboxes = document.querySelectorAll('.special-checkbox:checked');
+        if (checkboxes.length === 0) return;
+        checkboxes.forEach(cb => {
+          cart.push({ name: cb.value, price: 0 });
+        });
+        updateCartUI();
+        cartPanel.classList.add('open');
+        checkboxes.forEach(cb => cb.checked = false);
+        document.getElementById('selectAllSpecial').checked = false;
       });
 
       cartToggle.addEventListener('click', () => {
@@ -775,7 +937,6 @@
         cartPanel.classList.remove('open');
       });
 
-      // send to whatsapp
       document.getElementById('sendWACart').addEventListener('click', () => {
         const name = document.getElementById('fullName').value.trim() || 'Not provided';
         const mobile = document.getElementById('mobileNo').value.trim() || 'Not provided';
@@ -786,18 +947,19 @@
         const notes = document.getElementById('notes').value.trim() || 'none';
 
         let itemsText = '';
-        cart.forEach((item, i) => { itemsText += `%0A${i+1}. ${item.name} - ₹${item.price}`; });
+        cart.forEach((item, i) => { 
+          const pricePart = item.price ? ` - ₹${item.price}` : ' (manual price)';
+          itemsText += `%0A${i+1}. ${item.name}${pricePart}`; 
+        });
         if (!cart.length) itemsText = '%0A(no items selected)';
 
-        const total = cart.reduce((acc, i) => acc + i.price, 0);
-
-        const message = `*New Catering Inquiry*%0A%0A👤 *Name:* ${name}%0A📞 *Mobile:* ${mobile}%0A🎉 *Event:* ${eventType}%0A📅 *Date/time:* ${dateTime}%0A📍 *Address:* ${address}%0A👥 *People:* ${people}%0A📝 *Notes:* ${notes}%0A%0A🛒 *Selected Items:*${itemsText}%0A%0A💰 *Total: ₹${total}*`;
+        const message = `*New Catering Inquiry from Shree Bhalchandra Caterers Website*%0A%0A👤 *Name:* ${name}%0A📞 *Mobile:* ${mobile}%0A🎉 *Event:* ${eventType}%0A📅 *Date/time:* ${dateTime}%0A📍 *Address:* ${address}%0A👥 *People:* ${people}%0A📝 *Notes:* ${notes}%0A%0A🛒 *Selected Items:*${itemsText}%0A%0A_Manual price items will be quoted by P.P. Narvekar_`;
 
         const waLink = `https://wa.me/919420403640?text=${message}`;
         window.open(waLink, '_blank');
       });
 
-      // scroll animation
+      // Scroll animation
       const fadeElements = document.querySelectorAll('.fade-scroll');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
