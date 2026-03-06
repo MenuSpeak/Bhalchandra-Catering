@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Shree Bhalchandra Caterers · Mobile Menu</title>
+  <title>Shree Bhalchandra Caterers ·</title>
   <style>
     /* ----- RESET & GLOBAL ----- */
     * {
@@ -65,6 +65,14 @@
     .nav-links a:hover {
       border-bottom-color: #ffd78c;
       color: white;
+    }
+    /* Active nav link styling */
+    .nav-links a.active {
+      border-bottom-color: #ffd78c;
+      color: white;
+      font-weight: 600;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px 4px 0 0;
     }
     /* ----- FLOATING CART (smaller on mobile) ----- */
     .floating-cart {
@@ -298,17 +306,78 @@
     .add-cart-btn:hover {
       background: #b59362;
     }
-    /* special items grid */
-    .special-item-card {
-      background: #faf2e7;
-      border-radius: 20px;
-      padding: 0.8rem;
-      margin-bottom: 0.8rem;
+    /* special items grid - same styling as menu cards */
+    .special-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+      width: 100%;
+    }
+    .special-category-card {
+      width: 100%;
+      background: #ffffffed;
+      border-radius: 28px 8px 28px 8px;
+      box-shadow: 0 12px 20px -8px #ad8b67;
+      transition: 0.2s;
+      overflow: hidden;
+      border: 1px solid #eedbba;
+      margin-bottom: 1.5rem;
+    }
+    .special-cat-header {
+      background: linear-gradient(120deg, #ba9a6b, #a47e4e);
+      padding: 1rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      border-bottom: 3px solid #ffdc9f;
+    }
+    .special-cat-header h3 {
+      font-size: 1.5rem;
+      font-family: 'Georgia', serif;
+      word-break: break-word;
+      padding-right: 0.5rem;
+    }
+    .special-toggle-btn {
+      background: #2b1f10;
+      color: #ffd98c;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.8rem;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      border: 2px solid #e6cfb0;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 0 2px #ffeac2;
+      flex-shrink: 0;
+    }
+    .special-cat-items {
+      padding: 0 1rem 1rem;
+      background: #fffcf4;
+      transition: max-height 0.4s ease;
+      max-height: 2000px;
+      overflow: hidden;
+    }
+    .special-cat-items.collapsed {
+      max-height: 0;
+      padding: 0 1rem;
+    }
+    .special-item-card {
+      display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 0.9rem 0;
+      border-bottom: 1px dashed #d4b68a;
+      font-size: 1rem;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 0;
     }
     .special-item-card input[type="checkbox"] {
       width: 22px;
@@ -317,11 +386,20 @@
       flex-shrink: 0;
     }
     .special-item-detail {
-      flex: 1;
-      font-size: 1.1rem;
       font-weight: 500;
+      flex: 1 1 180px;
+      min-width: 160px;
       word-break: break-word;
-      min-width: 150px;
+      font-size: 1rem;
+    }
+    .special-item-desc {
+      font-weight: 700;
+      background: #d4af37;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      color: #1d140b;
+      white-space: nowrap;
+      font-size: 0.95rem;
     }
     .special-select-all {
       margin: 1rem 0;
@@ -331,6 +409,12 @@
       text-align: center;
       font-weight: 600;
       font-size: 1rem;
+    }
+    .select-all-checkbox {
+      width: 22px;
+      height: 22px;
+      accent-color: #a77b4d;
+      margin-right: 8px;
     }
     /* ----- CART PANEL (mobile full width overlay) ----- */
     .cart-panel {
@@ -497,13 +581,13 @@
       .hero h2 { font-size: 1.3rem; }
       .btn-call-hero { font-size: 1.2rem; padding: 0.6rem 1.2rem; }
       .section-title { font-size: 1.9rem; }
-      .cat-header h3 { font-size: 1.3rem; }
+      .cat-header h3, .special-cat-header h3 { font-size: 1.3rem; }
       .cart-panel { max-width: 100%; padding: 1rem; }
     }
     /* for very narrow */
     @media (max-width: 360px) {
-      .menu-item-row { flex-direction: column; align-items: flex-start; }
-      .item-price { align-self: flex-start; }
+      .menu-item-row, .special-item-card { flex-direction: column; align-items: flex-start; }
+      .item-price, .special-item-desc { align-self: flex-start; }
     }
   </style>
 </head>
@@ -511,11 +595,11 @@
   <nav class="navbar">
     <div class="nav-logo">Shree Bhalchandra</div>
     <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#menu">Menu</a>
-      <a href="#special-events">Events</a>
-      <a href="#footer">Contact</a>
+      <a href="#home" id="navHome" class="active">Home</a>
+      <a href="#about" id="navAbout">About</a>
+      <a href="#menu" id="navMenu">Menu</a>
+      <a href="#special-events" id="navEvents">Events</a>
+      <a href="#footer" id="navContact">Contact</a>
     </div>
   </nav>
 
@@ -537,22 +621,22 @@
   </section>
 
   <!-- MAIN MENU (complete) -->
-  <section id="menu" class="section">
+  <section id="menu" class="section" style="display: block;">
     <h2 class="section-title">Our Complete Main Menu</h2>
     <div class="menu-grid" id="menuGrid"></div>
   </section>
 
-  <!-- SPECIAL EVENTS MENU -->
-  <section id="special-events" class="section fade-scroll">
+  <!-- SPECIAL EVENTS MENU (hidden by default, same styling as main menu) -->
+  <section id="special-events" class="section" style="display: none;">
     <h2 class="section-title">Special Events Menu (Manual Pricing)</h2>
-    <div class="about-card" style="background:#fcf3e4;">
+    <div class="about-card" style="background:#fcf3e4; margin-bottom: 2rem;">
       <p style="font-size:1.1rem; margin-bottom:1rem;">⭐ Select multiple items for your wedding/event – final price will be communicated by Mr. Narvekar. Just share the item list with us.</p>
-      <div id="specialMenuContainer"></div>
-      <div style="display:flex; gap:1rem; justify-content:flex-end; margin-top:1.5rem;">
-        <button id="addSelectedSpecialBtn" class="add-cart-btn" style="font-size:1.1rem; padding:0.7rem 1.5rem;">➕ Add selected to cart</button>
-      </div>
-      <p style="margin-top:1rem; font-style:italic; color:#5f3f21;">Note: prices are not included; you will receive total manually.</p>
     </div>
+    <div id="specialMenuContainer"></div>
+    <div style="display:flex; gap:1rem; justify-content:flex-end; margin-top:1.5rem;">
+      <button id="addSelectedSpecialBtn" class="add-cart-btn" style="font-size:1.1rem; padding:0.7rem 1.5rem;">➕ Add selected to cart</button>
+    </div>
+    <p style="margin-top:1rem; font-style:italic; color:#5f3f21;">Note: prices are not included; you will receive total manually.</p>
   </section>
 
   <div class="floating-cart" id="cartToggle">
@@ -631,10 +715,9 @@
 
   <script>
     (function() {
-      // COMPLETE MAIN MENU DATA (same as original)
+      // COMPLETE MAIN MENU DATA
       const categories = [
         { name: "Veg Thali (₹150 - 280)", items: [
-          // "120₹ थाळी : प्लेन राईस, वाटाणा उसळ, कोबी भाजी, कोशिंबीर, लोणचे, पापड, डाळ",
           "प्लेन राईस, डाळ, हि. वाटाणा, उसळ, लोणचे, पापड, कोशिंबीर, बटाटा भाजी (120₹)",
           "प्लेन राईस, डाळ, हि. वाटाणा उसळ, बटाटा भाजी, कोशिंबीर, लोणचे, पापड, पुरी (150₹)",
           "प्लेन राईस, वरण, कुर्मा, पुरी, बटाटा भाजी, जिलेबी, लोणचे, पापड, कोशिंबीर (190₹)",
@@ -669,77 +752,84 @@
           "कटलेट – ३०₹", "समोसा – ४०₹", "चहा – २०₹", "कॉफी – २५₹", "वेलकम ड्रिंक – ६०₹",
           "मेदूवडा चटणी/इडली सांबार – ८०₹", "पाव भाजी १२०", "आम्लेट पाव – ५०₹"
         ] },
-        // { name: "Extra / जियाणी (with rates)", items: [
-        //   "श्रीखंड, सोलकडी, पापड, लोणचे (as per thali)",
-        //   "जिग राईस – १००₹/plate",
-        //   "पुरी – ६०₹/plate",
-        //   "मिक्स भजी – ५०₹", 
-        //   "कालाजामून (per plate)",
-        //   "गुलाबजामून (per plate)",
-        //   "रस मलाई (per plate)",
-        //   "बासुंदी (per plate)",
-        //   "फुल्के / रोटी (per piece)"
-        // ] }
+        { name: "Extra / जियाणी (with rates)", items: [
+          "श्रीखंड - प्लेट ८०₹",
+          "सोलकडी – २०₹ per piece",
+          "पापड – १०₹ per piece",
+          "लोणचे – २०₹ per plate",
+          "जिग राईस – १००₹/plate",
+          "पुरी – ६०₹/plate (4 pcs)",
+          "मिक्स भजी – ५०₹ per plate", 
+          "कालाजामून (2 pcs) – ४०₹",
+          "गुलाबजामून (2 pcs) – ४०₹",
+          "रस मलाई – ७०₹ per plate",
+          "बासुंदी – ६०₹ per plate",
+          "फुल्के / रोटी – २०₹ per piece",
+          "भाकरी – ३०₹ each"
+        ] }
       ];
 
-      // Special events items (full from original)
-      // const specialItems = [
-      //   "Water melon juice","Pineapple juice","Pink peru juice","Pinacolada","Kiwi pineapple juice",
-      //   "Kokam sarbat","Mango sarbat","Virgin mojito","Blue lugaan","Painato","Fresh lime","Tea","Coffee",
-      //   "Mango pickle","Lemon pickle","Mix pickle","Vanilla with chocolate","Butterscotch","Chocolate",
-      //   "Strawberry","Rajbhog","Kulfi","Harabhara kabab","Cheese corn boll","Paneer tikka","Paneer chilly",
-      //   "Veg Manchurian","Veg finger","Veg lollipop","Veg cutlet","Veg spring roll","American roll",
-      //   "Aaluwadi","Kothimbir vadi","Mini vada","Mix bhajiya","Dhokla","Green salad","Raita","Bundi raita",
-      //   "Ctchumber","Koshimbir dahi","Onion raita","Jalebi","Gulab jamun","Rasgulla","Basundi","Sitafal basuni",
-      //   "Mugdal halwa","Rasmalai","Angur basundi","Aamras","Rabadi jalebi","Shahi tukda","Modak","Puran poli",
-      //   "Dry fruits sheera","Chat counter","Fruits counter","Dosa counter","Chinese counter","Sweet counter",
-      //   "Steam rice","Jeera rice","Mix pulav","Kaju mattar pulav","Shahi pulav","Veg Biryani","Lemon rice",
-      //   "Biryani rice","Malvani dal","Dal fray","Dal tadka","Punjabi kadi","Mix dal","Dal makhani",
-      //   "Bhendi masala","Chana masala","Chole masala","Kurma","Mix vej kolhapuri","Kaju paneer masala",
-      //   "Baigan masala","Kaju mataar masala","Malvani kaju usal","Kaju masala","Allo mattar","Aalu sabji",
-      //   "Aalu jeera","Vej kofta","Tawa maifil","Vej haydrabadi",
-      // ];
-
-
-      // Special events items (full from original)
-const specialItems = [
-  "Water melon juice","Pineapple juice","Pink peru juice","Pinacolada","Kiwi pineapple juice",
-  "Kokam sarbat","Mango sarbat","Virgin mojito","Blue lugaan","Painato","Fresh lime","Tea","Coffee",
-  "Mango pickle","Lemon pickle","Mix pickle","Vanilla with chocolate","Butterscotch","Chocolate",
-  "Strawberry","Rajbhog","Kulfi","Harabhara kabab","Cheese corn boll","Paneer tikka","Paneer chilly",
-  "Veg Manchurian","Veg finger","Veg lollipop","Veg cutlet","Veg spring roll","American roll",
-  "Aaluwadi","Kothimbir vadi","Mini vada","Mix bhajiya","Dhokla","Green salad","Raita","Bundi raita",
-  "Ctchumber","Koshimbir dahi","Onion raita","Jalebi","Gulab jamun","Rasgulla","Basundi","Sitafal basuni",
-  "Mugdal halwa","Rasmalai","Angur basundi","Aamras","Rabadi jalebi","Shahi tukda","Modak","Puran poli",
-  "Dry fruits sheera","Chat counter","Fruits counter","Dosa counter","Chinese counter","Sweet counter",
-  "Steam rice","Jeera rice","Mix pulav","Kaju mattar pulav","Shahi pulav","Veg Biryani","Lemon rice",
-  "Biryani rice","Malvani dal","Dal fray","Dal tadka","Punjabi kadi","Mix dal","Dal makhani",
-  "Bhendi masala","Chana masala","Chole masala","Kurma","Mix vej kolhapuri","Kaju paneer masala",
-  "Baigan masala","Kaju mataar masala","Malvani kaju usal","Kaju masala","Allo mattar","Aalu sabji",
-  "Aalu jeera","Vej kofta","Tawa maifil","Vej haydrabadi",
-
-  // --- New items extracted from images ---
-
-  // Bread Basket
-  "Phulke", "Roti", "Butter Roti", "Rumali Roti", "Chapati", "Bhakari", "Jwari Bhakari", "Nachani Bhakari", "Vade", "Puri", "Laccha Paratha", "Stuff Naan",
-  
-  // Rice (Duplicates commented out)
-  // "Plain Steem Rice", // Duplicate of Steam rice
-  // "Biryani Rice", // Duplicate of Biryani rice
-  // "Jeera Rice", // Duplicate of Jeera rice
-  "Chicken Biryani", "Chicken Fried Rice", "Chicken Shezwan Rice", "Chicken Pulaw", "Ghee Rice", "Aalani Rice NonVeg",
-  
-  // Non-Veg Curry
-  "Chicken Malvani", "Chicken Kolhapuri", "Chicken Masala", "Chicken Tikka Masala", "Butter Chicken Masala", "Chicken Rara", "Chicken Hydrabadi", "Egg Masala", "Chicken Lababdar", "Chicken Cafreal", "Chicken Kadai", "Mutton Malvani", "Mutton Bhuna", "Mutton Moglai", "Chicken Moglai", "Chicken Changezi", "Tawa Chicken", "Tawa Mutton",
-  
-  // Starters
-  "Chicken 65", "Chicken Pakoda", "Chicken Chilly", "Chicken Manchurian", "Chicken Kabab", "Chicken Lollipop", "Chicken Popcorn", "Chicken Seekh Kabab", "Chicken Angara Kabab", "Chicken Roll", "Chicken Tikka Kabab",
-  
-  // Soups
-  "Chicken Clear Soup", "Chicken Sweet Corn Soup", "Hot & Sour Soup", "Chicken Dragon Soup", "Chicken Manchow Soup", "Cream of Chicken Soup", "Mutton Pepper Soup",
-];
+      // Special events items organized in categories for better UX
+      const specialCategories = [
+        { name: "Juices & Beverages", items: [
+          "Water melon juice","Pineapple juice","Pink peru juice","Pinacolada","Kiwi pineapple juice",
+          "Kokam sarbat","Mango sarbat","Virgin mojito","Blue lugaan","Painato","Fresh lime","Tea","Coffee"
+        ] },
+        { name: "Pickles & Ice Creams", items: [
+          "Mango pickle","Lemon pickle","Mix pickle","Vanilla with chocolate","Butterscotch","Chocolate",
+          "Strawberry","Rajbhog","Kulfi"
+        ] },
+        { name: "Starters (Veg)", items: [
+          "Harabhara kabab","Cheese corn boll","Paneer tikka","Paneer chilly","Veg Manchurian","Veg finger",
+          "Veg lollipop","Veg cutlet","Veg spring roll","American roll","Aaluwadi","Kothimbir vadi",
+          "Mini vada","Mix bhajiya","Dhokla"
+        ] },
+        { name: "Salads & Raitas", items: [
+          "Green salad","Raita","Bundi raita","Ctchumber","Koshimbir dahi","Onion raita"
+        ] },
+        { name: "Desserts", items: [
+          "Jalebi","Gulab jamun","Rasgulla","Basundi","Sitafal basuni","Mugdal halwa","Rasmalai",
+          "Angur basundi","Aamras","Rabadi jalebi","Shahi tukda","Modak","Puran poli","Dry fruits sheera"
+        ] },
+        { name: "Counters", items: [
+          "Chat counter","Fruits counter","Dosa counter","Chinese counter","Sweet counter"
+        ] },
+        { name: "Rice Items", items: [
+          "Steam rice","Jeera rice","Mix pulav","Kaju mattar pulav","Shahi pulav","Veg Biryani",
+          "Lemon rice","Biryani rice"
+        ] },
+        { name: "Dal & Curries (Veg)", items: [
+          "Malvani dal","Dal fray","Dal tadka","Punjabi kadi","Mix dal","Dal makhani","Bhendi masala",
+          "Chana masala","Chole masala","Kurma","Mix vej kolhapuri","Kaju paneer masala","Baigan masala",
+          "Kaju mataar masala","Malvani kaju usal","Kaju masala","Allo mattar","Aalu sabji","Aalu jeera",
+          "Vej kofta","Tawa maifil","Vej haydrabadi"
+        ] },
+        { name: "Bread Basket", items: [
+          "Phulke", "Roti", "Butter Roti", "Rumali Roti", "Chapati", "Bhakari", "Jwari Bhakari",
+          "Nachani Bhakari", "Vade", "Puri", "Laccha Paratha", "Stuff Naan"
+        ] },
+        { name: "Non-Veg Specialties", items: [
+          "Chicken Biryani", "Chicken Fried Rice", "Chicken Shezwan Rice", "Chicken Pulaw", "Ghee Rice",
+          "Aalani Rice NonVeg", "Chicken Malvani", "Chicken Kolhapuri", "Chicken Masala", "Chicken Tikka Masala",
+          "Butter Chicken Masala", "Chicken Rara", "Chicken Hydrabadi", "Egg Masala", "Chicken Lababdar",
+          "Chicken Cafreal", "Chicken Kadai", "Mutton Malvani", "Mutton Bhuna", "Mutton Moglai",
+          "Chicken Moglai", "Chicken Changezi", "Tawa Chicken", "Tawa Mutton", "Chicken 65", "Chicken Pakoda",
+          "Chicken Chilly", "Chicken Manchurian", "Chicken Kabab", "Chicken Lollipop", "Chicken Popcorn",
+          "Chicken Seekh Kabab", "Chicken Angara Kabab", "Chicken Roll", "Chicken Tikka Kabab",
+          "Chicken Clear Soup", "Chicken Sweet Corn Soup", "Hot & Sour Soup", "Chicken Dragon Soup",
+          "Chicken Manchow Soup", "Cream of Chicken Soup", "Mutton Pepper Soup"
+        ] }
+      ];
 
       const menuGrid = document.getElementById('menuGrid');
+      const menuSection = document.getElementById('menu');
+      const specialSection = document.getElementById('special-events');
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
+      const navMenu = document.getElementById('navMenu');
+      const navEvents = document.getElementById('navEvents');
+      const navContact = document.getElementById('navContact');
+
       function renderMainMenu() {
         menuGrid.innerHTML = '';
         categories.forEach(cat => {
@@ -754,9 +844,9 @@ const specialItems = [
             const row = document.createElement('div');
             row.className = 'menu-item-row';
             let priceNum = 0;
-            const priceMatch = it.match(/(\d+)(?=₹)/) || it.match(/[^\d](\d+)\s*₹/);
+            const priceMatch = it.match(/(\d+)(?=\s*[₹])/) || it.match(/[^\d](\d+)\s*[₹]/);
             if (priceMatch) priceNum = parseInt(priceMatch[1], 10);
-            else { // crude fallback
+            else {
               if (it.includes('१००')||it.includes('100')) priceNum=100;
               else if (it.includes('१२००')||it.includes('1200')) priceNum=1200;
               else if (it.includes('१८००')||it.includes('1800')) priceNum=1800;
@@ -772,7 +862,7 @@ const specialItems = [
               else if (it.includes('१७०')||it.includes('170')) priceNum=170;
               else if (it.includes('२३०')||it.includes('230')) priceNum=230;
             }
-            const displayName = it.replace(/\s*[\(\{]?\d+\s*₹[\)\}]?/g,'').trim() || it;
+            const displayName = it.replace(/\s*[\(\{]?\d+\s*[₹][\)\}]?/g,'').trim() || it;
             row.innerHTML = `
               <span class="item-name">${displayName}</span>
               <span class="item-price">${priceNum}₹</span>
@@ -793,22 +883,124 @@ const specialItems = [
       }
       renderMainMenu();
 
-      const specialContainer = document.getElementById('specialMenuContainer');
       function renderSpecialMenu() {
-        let html = `<div class="special-select-all"><label><input type="checkbox" id="selectAllSpecial"> Select all special items (for event enquiry)</label></div>`;
-        specialItems.forEach((item, idx) => {
-          html += `<div class="special-item-card">
-            <input type="checkbox" class="special-checkbox" value="${item}" id="sp_${idx}">
-            <div class="special-item-detail">${item}</div>
-            <span class="special-item-desc">(manual price)</span>
-          </div>`;
+        const container = document.getElementById('specialMenuContainer');
+        let html = `<div class="special-select-all">
+          <input type="checkbox" id="selectAllSpecial" class="select-all-checkbox"> 
+          <label for="selectAllSpecial">Select all special items (for event enquiry)</label>
+        </div>`;
+        
+        html += '<div class="special-grid">';
+        specialCategories.forEach(cat => {
+          html += `<div class="special-category-card">
+            <div class="special-cat-header">
+              <h3>${cat.name}</h3>
+              <span class="special-toggle-btn">−</span>
+            </div>
+            <div class="special-cat-items">`;
+          
+          cat.items.forEach((item, idx) => {
+            html += `<div class="special-item-card">
+              <input type="checkbox" class="special-checkbox" value="${item}" data-cat="${cat.name}">
+              <span class="special-item-detail">${item}</span>
+              <span class="special-item-desc">(manual price)</span>
+            </div>`;
+          });
+          
+          html += `</div></div>`;
         });
-        specialContainer.innerHTML = html;
+        html += '</div>';
+        container.innerHTML = html;
+
+        // Add toggle functionality to special category headers
+        document.querySelectorAll('.special-cat-header').forEach((header, index) => {
+          const btn = header.querySelector('.special-toggle-btn');
+          const itemsDiv = header.nextElementSibling;
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            itemsDiv.classList.toggle('collapsed');
+            btn.textContent = itemsDiv.classList.contains('collapsed') ? '+' : '−';
+          });
+        });
+
         document.getElementById('selectAllSpecial').addEventListener('change', (e) => {
           document.querySelectorAll('.special-checkbox').forEach(cb => cb.checked = e.target.checked);
         });
       }
       renderSpecialMenu();
+
+      // Navigation active state and section switching
+      function setActiveNav(activeId) {
+        [navHome, navAbout, navMenu, navEvents, navContact].forEach(link => {
+          link.classList.remove('active');
+        });
+        document.getElementById(activeId).classList.add('active');
+      }
+
+      function showSection(sectionId) {
+        // Hide all sections first
+        menuSection.style.display = 'none';
+        specialSection.style.display = 'none';
+        document.getElementById('about').style.display = 'none';
+        document.getElementById('home').style.display = 'block'; // home always visible? Actually home is above sections
+        
+        // Show the requested section
+        if (sectionId === 'menu') {
+          menuSection.style.display = 'block';
+          setActiveNav('navMenu');
+        } else if (sectionId === 'special-events') {
+          specialSection.style.display = 'block';
+          setActiveNav('navEvents');
+        } else if (sectionId === 'about') {
+          document.getElementById('about').style.display = 'block';
+          setActiveNav('navAbout');
+        } else if (sectionId === 'home') {
+          setActiveNav('navHome');
+        } else if (sectionId === 'footer') {
+          setActiveNav('navContact');
+        }
+      }
+
+      navMenu.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('menu');
+        window.location.hash = '#menu';
+      });
+
+      navEvents.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('special-events');
+        window.location.hash = '#special-events';
+      });
+
+      navAbout.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('about');
+        window.location.hash = '#about';
+      });
+
+      navHome.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('home');
+        window.location.hash = '#home';
+      });
+
+      navContact.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('footer');
+        window.location.hash = '#footer';
+      });
+
+      // Show initial section based on URL hash
+      if (window.location.hash === '#special-events') {
+        showSection('special-events');
+      } else if (window.location.hash === '#about') {
+        showSection('about');
+      } else if (window.location.hash === '#footer') {
+        showSection('footer');
+      } else {
+        showSection('menu'); // Default to menu
+      }
 
       // Cart logic
       let cart = [];
