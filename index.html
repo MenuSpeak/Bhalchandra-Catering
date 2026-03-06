@@ -683,22 +683,61 @@
       ];
 
       // Special events items (full from original)
-      const specialItems = [
-        "Water melon juice","Pineapple juice","Pink peru juice","Pinacolada","Kiwi pineapple juice",
-        "Kokam sarbat","Mango sarbat","Virgin mojito","Blue lugaan","Painato","Fresh lime","Tea","Coffee",
-        "Mango pickle","Lemon pickle","Mix pickle","Vanilla with chocolate","Butterscotch","Chocolate",
-        "Strawberry","Rajbhog","Kulfi","Harabhara kabab","Cheese corn boll","Paneer tikka","Paneer chilly",
-        "Veg Manchurian","Veg finger","Veg lollipop","Veg cutlet","Veg spring roll","American roll",
-        "Aaluwadi","Kothimbir vadi","Mini vada","Mix bhajiya","Dhokla","Green salad","Raita","Bundi raita",
-        "Ctchumber","Koshimbir dahi","Onion raita","Jalebi","Gulab jamun","Rasgulla","Basundi","Sitafal basuni",
-        "Mugdal halwa","Rasmalai","Angur basundi","Aamras","Rabadi jalebi","Shahi tukda","Modak","Puran poli",
-        "Dry fruits sheera","Chat counter","Fruits counter","Dosa counter","Chinese counter","Sweet counter",
-        "Steam rice","Jeera rice","Mix pulav","Kaju mattar pulav","Shahi pulav","Veg Biryani","Lemon rice",
-        "Biryani rice","Malvani dal","Dal fray","Dal tadka","Punjabi kadi","Mix dal","Dal makhani",
-        "Bhendi masala","Chana masala","Chole masala","Kurma","Mix vej kolhapuri","Kaju paneer masala",
-        "Baigan masala","Kaju mataar masala","Malvani kaju usal","Kaju masala","Allo mattar","Aalu sabji",
-        "Aalu jeera","Vej kofta","Tawa maifil","Vej haydrabadi",
-      ];
+      // const specialItems = [
+      //   "Water melon juice","Pineapple juice","Pink peru juice","Pinacolada","Kiwi pineapple juice",
+      //   "Kokam sarbat","Mango sarbat","Virgin mojito","Blue lugaan","Painato","Fresh lime","Tea","Coffee",
+      //   "Mango pickle","Lemon pickle","Mix pickle","Vanilla with chocolate","Butterscotch","Chocolate",
+      //   "Strawberry","Rajbhog","Kulfi","Harabhara kabab","Cheese corn boll","Paneer tikka","Paneer chilly",
+      //   "Veg Manchurian","Veg finger","Veg lollipop","Veg cutlet","Veg spring roll","American roll",
+      //   "Aaluwadi","Kothimbir vadi","Mini vada","Mix bhajiya","Dhokla","Green salad","Raita","Bundi raita",
+      //   "Ctchumber","Koshimbir dahi","Onion raita","Jalebi","Gulab jamun","Rasgulla","Basundi","Sitafal basuni",
+      //   "Mugdal halwa","Rasmalai","Angur basundi","Aamras","Rabadi jalebi","Shahi tukda","Modak","Puran poli",
+      //   "Dry fruits sheera","Chat counter","Fruits counter","Dosa counter","Chinese counter","Sweet counter",
+      //   "Steam rice","Jeera rice","Mix pulav","Kaju mattar pulav","Shahi pulav","Veg Biryani","Lemon rice",
+      //   "Biryani rice","Malvani dal","Dal fray","Dal tadka","Punjabi kadi","Mix dal","Dal makhani",
+      //   "Bhendi masala","Chana masala","Chole masala","Kurma","Mix vej kolhapuri","Kaju paneer masala",
+      //   "Baigan masala","Kaju mataar masala","Malvani kaju usal","Kaju masala","Allo mattar","Aalu sabji",
+      //   "Aalu jeera","Vej kofta","Tawa maifil","Vej haydrabadi",
+      // ];
+
+
+      // Special events items (full from original)
+const specialItems = [
+  "Water melon juice","Pineapple juice","Pink peru juice","Pinacolada","Kiwi pineapple juice",
+  "Kokam sarbat","Mango sarbat","Virgin mojito","Blue lugaan","Painato","Fresh lime","Tea","Coffee",
+  "Mango pickle","Lemon pickle","Mix pickle","Vanilla with chocolate","Butterscotch","Chocolate",
+  "Strawberry","Rajbhog","Kulfi","Harabhara kabab","Cheese corn boll","Paneer tikka","Paneer chilly",
+  "Veg Manchurian","Veg finger","Veg lollipop","Veg cutlet","Veg spring roll","American roll",
+  "Aaluwadi","Kothimbir vadi","Mini vada","Mix bhajiya","Dhokla","Green salad","Raita","Bundi raita",
+  "Ctchumber","Koshimbir dahi","Onion raita","Jalebi","Gulab jamun","Rasgulla","Basundi","Sitafal basuni",
+  "Mugdal halwa","Rasmalai","Angur basundi","Aamras","Rabadi jalebi","Shahi tukda","Modak","Puran poli",
+  "Dry fruits sheera","Chat counter","Fruits counter","Dosa counter","Chinese counter","Sweet counter",
+  "Steam rice","Jeera rice","Mix pulav","Kaju mattar pulav","Shahi pulav","Veg Biryani","Lemon rice",
+  "Biryani rice","Malvani dal","Dal fray","Dal tadka","Punjabi kadi","Mix dal","Dal makhani",
+  "Bhendi masala","Chana masala","Chole masala","Kurma","Mix vej kolhapuri","Kaju paneer masala",
+  "Baigan masala","Kaju mataar masala","Malvani kaju usal","Kaju masala","Allo mattar","Aalu sabji",
+  "Aalu jeera","Vej kofta","Tawa maifil","Vej haydrabadi",
+
+  // --- New items extracted from images ---
+
+  // Bread Basket
+  "Phulke", "Roti", "Butter Roti", "Rumali Roti", "Chapati", "Bhakari", "Jwari Bhakari", "Nachani Bhakari", "Vade", "Puri", "Laccha Paratha", "Stuff Naan",
+  
+  // Rice (Duplicates commented out)
+  // "Plain Steem Rice", // Duplicate of Steam rice
+  // "Biryani Rice", // Duplicate of Biryani rice
+  // "Jeera Rice", // Duplicate of Jeera rice
+  "Chicken Biryani", "Chicken Fried Rice", "Chicken Shezwan Rice", "Chicken Pulaw", "Ghee Rice", "Aalani Rice NonVeg",
+  
+  // Non-Veg Curry
+  "Chicken Malvani", "Chicken Kolhapuri", "Chicken Masala", "Chicken Tikka Masala", "Butter Chicken Masala", "Chicken Rara", "Chicken Hydrabadi", "Egg Masala", "Chicken Lababdar", "Chicken Cafreal", "Chicken Kadai", "Mutton Malvani", "Mutton Bhuna", "Mutton Moglai", "Chicken Moglai", "Chicken Changezi", "Tawa Chicken", "Tawa Mutton",
+  
+  // Starters
+  "Chicken 65", "Chicken Pakoda", "Chicken Chilly", "Chicken Manchurian", "Chicken Kabab", "Chicken Lollipop", "Chicken Popcorn", "Chicken Seekh Kabab", "Chicken Angara Kabab", "Chicken Roll", "Chicken Tikka Kabab",
+  
+  // Soups
+  "Chicken Clear Soup", "Chicken Sweet Corn Soup", "Hot & Sour Soup", "Chicken Dragon Soup", "Chicken Manchow Soup", "Cream of Chicken Soup", "Mutton Pepper Soup",
+];
 
       const menuGrid = document.getElementById('menuGrid');
       function renderMainMenu() {
